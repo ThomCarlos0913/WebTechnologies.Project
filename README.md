@@ -18,7 +18,7 @@ A Web Application which keeps track of an organization's event and its participa
 
 ---
 ### Developed by:  
-CAADYANG, Mark Noe Christian N.  
+CAADYANG, Mark Noe Christian P.  
 CARLOS, John Thomas  
-CUARESMA, Dexter James P.  
+CUARESMA, Dexter James L.  
 ORTIZ, Ralph Christian A.  
