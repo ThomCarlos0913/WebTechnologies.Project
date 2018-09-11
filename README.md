@@ -1,7 +1,6 @@
-# Web Technologies Project
-## Event Registration   
+# Event Registration   
 
-A Web Application which keeps track of an organization's event and its participants
+A Web Application which keeps track of an organization's event and its participants.
 
 ---
 
