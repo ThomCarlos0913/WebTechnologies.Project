@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login to your account</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/login-style.css" />
+  </head>
+  <body>
+    <div id="vue-app">
+      <!-- Login Section -->
+      <div style="float:left; height:100px; width: 400px;">
+        <div id="login-section">
+          <div style="margin: 75px 55px;">
+            <h1 style="margin-bottom: 35px; font-family: 'ProximaNovaBold'">Login to your account</h1>
+            <input class="login-textbox" type="text" placeholder="Username" v-model="username" /><br />
+            <input class="login-textbox" type="password" placeholder="Password" v-model="password" /><br />
+            <button>Login</button>
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+      </div>
+      <!-- Welcome message -->
+      <div id="login-message-section" style="float: left">
+        <div id="message-container">
+          <h1>Welcome!</h1>
+          <p>We are an organization that aims to help Adamson Computer Engineering<br />
+          Society through this web app by organizing the organization's future event<br />
+          and serving as a helper for the student members and faculty of the organization</p>
+          <button v-on:click="displaysignup">Register an account</button>
+        </div>
+      </div>
+      <!-- Signup overlay -->
+      <!-- Note: Signup programmer please add codes after this comment. Delete comment afterwards-->
+    </div>
+    <script src="../scripts/vue_app.js"></script>
+  </body>
+</html>
