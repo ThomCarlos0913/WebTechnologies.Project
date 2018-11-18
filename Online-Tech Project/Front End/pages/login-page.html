@@ -31,7 +31,19 @@
         </div>
       </div>
       <!-- Signup overlay -->
-      <!-- Note: Signup programmer please add codes after this comment. Delete comment afterwards-->
+      <div id="signup-overlay" v-show="show_signup">
+        <div id="signup-container">
+          <div style="margin:30px 35px;">
+            <p style="text-align: center;">Please enter required information</p>
+            <input class="signup-textbox" type="text" placeholder="Username" v-model="signup_username"/><br />
+            <input class="signup-textbox" type="password" placeholder="Password" v-model="signup_password"/><br />
+            <input class="signup-textbox" type="password" placeholder="Confirm Password" v-model="signup_confirmpass"/><br />
+            <input class="signup-textbox" type="text" placeholder="Email" v-model="signup_email"/><br />
+            <button style="background-color: #007399; color: white; margin-top: 15px" class="signup-button">Register Account</button><br />
+            <button style="background-color: #ff6666; color: white; margin-top: 10px;" class="signup-button" v-on:click="hidesignup">Cancel</button>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="../scripts/vue_app.js"></script>
   </body>
