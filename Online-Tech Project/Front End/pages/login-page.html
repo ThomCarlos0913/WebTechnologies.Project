@@ -4,10 +4,10 @@
     <title>Login to your account</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-    <link rel="stylesheet" type="text/css" href="../styles/login-style.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/style.css" />
   </head>
   <body>
-    <div id="vue-app">
+    <div id="login_vue">
       <!-- Login Section -->
       <div style="float:left; height:100px; width: 400px;">
         <div id="login-section">
@@ -15,7 +15,7 @@
             <h1 style="margin-bottom: 35px; font-family: 'ProximaNovaBold'">Login to your account</h1>
             <input class="login-textbox" type="text" placeholder="Username" v-model="username" /><br />
             <input class="login-textbox" type="password" placeholder="Password" v-model="password" /><br />
-            <button>Login</button>
+            <button v-on:click="verifyaccount">Login</button>
             <a href="#">Forgot password?</a>
           </div>
         </div>
@@ -39,7 +39,7 @@
             <input class="signup-textbox" type="password" placeholder="Password" v-model="signup_password"/><br />
             <input class="signup-textbox" type="password" placeholder="Confirm Password" v-model="signup_confirmpass"/><br />
             <input class="signup-textbox" type="text" placeholder="Email" v-model="signup_email"/><br />
-            <button style="background-color: #007399; color: white; margin-top: 15px" class="signup-button">Register Account</button><br />
+            <button style="background-color: #007399; color: white; margin-top: 15px" class="signup-button" v-on:click="registeraccount">Register Account</button><br />
             <button style="background-color: #ff6666; color: white; margin-top: 10px;" class="signup-button" v-on:click="hidesignup">Cancel</button>
           </div>
         </div>
