@@ -130,3 +130,31 @@ body {
   border-radius: 5px;
   border: 0;
 }
+
+/* Admin Page Section */
+#menu-section {
+  background-color: #1a1a1a;
+  padding-top: 50px;
+  float: left;
+  position:fixed;
+  width: 200px;
+  height: 100%;
+}
+
+#menu-section .menu-btn {
+  display: block;
+  text-decoration: None;
+  Color: White;
+  font-size: 16px;
+  padding: 10px;
+}
+
+#menu-section .menu-btn:hover {
+  background-color: #3399ff;
+}
+
+#menu-section .menu-icon {
+  margin-left: 5px;
+  margin-right: 10px;
+  margin-bottom: -5px;
+}
