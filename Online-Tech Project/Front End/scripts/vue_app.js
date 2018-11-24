@@ -1,5 +1,5 @@
-new Vue ({
-  el: "#vue-app",
+var login_vue = new Vue ({
+  el: "#login_vue",
   data: {
     username: null,
     password: null,
@@ -7,7 +7,7 @@ new Vue ({
     signup_username: null,
     signup_password: null,
     signup_confirmpass: null,
-    signup_email: null
+    signup_email: null,
   },
   methods: {
     displaysignup: function() {
@@ -15,6 +15,49 @@ new Vue ({
     },
     hidesignup: function() {
       this.show_signup = false;
+    },
+    /* VERIFYACCOUNT FUNCTION NOT YET DONE*/
+    verifyaccount: function() {
+      axios.get('http://localhost:5000/validate_account', {
+        params: {
+          username: this.username,
+          password: this.password
+        }
+      })
+      .then(response => {})
+    },
+    registeraccount: function() {
+      if (this.signup_username && this.signup_password && this.signup_confirmpass && this.signup_email){
+          if(this.signup_password == this.signup_confirmpass){
+            axios.post('http://localhost:5000/register_acount', {
+                s_user: this.signup_username,
+                s_pass: this.signup_password,
+                s_email: this.signup_email
+            })
+            .then(response => {
+              if (response.data == "409"){
+                alert('ERROR 409: Username already taken by another.')
+              }
+              else if (response.data == "200") {
+                alert('Welcome! Account created.');
+                this.show_signup = false;
+              }
+            })
+          }
+          else{
+            alert('Password and confirm password does not match.')
+          }
+      }
+      else {
+        alert('Please fill up all forms')
+      }
     }
   }
-})
+});
+
+var admin_vue = new Vue ({
+  el: "#admin_vue",
+  data: {
+    message: "Hello Admin"
+  }
+});
