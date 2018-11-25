@@ -20,6 +20,99 @@ body {
   src: url('fonts/ProximaNovaA-Black.woff2') format('woff2');
 }
 
+/* Index page Section */
+#image-slider-container {
+  max-width: 2000px;
+  position: relative;
+  margin: auto;
+}
+
+#image-slider-container .slides {
+  display: none;
+}
+
+#image-slider-container .prev, .next {
+  border-radius: 0 3px 3px 0;
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  user-select: none;
+}
+
+#image-slider-container .prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#image-slider-container .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #0066cc;
+}
+
+#image-slider-container .fade {
+  /* for mozilla */
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  /* for chrome */
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.caption-header {
+  color: #f2f2f2;
+  font-family: "ProximaNovaBlack";
+  font-size: 60px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 90px;
+  left: 100px;
+  width: 100%;
+}
+
+.caption-text {
+  color: #f2f2f2;
+  font-family: "ProximaNovaRg";
+  font-size: 16px;
+  font-style: italic;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 160px;
+  left: 200px;
+  width: 100%;
+}
+
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
 /* User Login Section*/
 #login-section {
   background-color: #00004d;
