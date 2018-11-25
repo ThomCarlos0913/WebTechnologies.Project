@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Mania | Home </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/style.css" />
+  </head>
+  <body>
+    <div id="index-vue">
+      <!-- Jumbotron/Slide show -->
+      <div id="image-slider-container">
+        <!-- Event photo 1 -->
+        <div class="slides fade">
+          <img src="../styles/carousel/Event1(v2).jpg" width="100%" alt="Event Photo 1"/>
+          <div class="caption-header">SXSW Music</div>
+          <div class="caption-text">"... to simply put it in words, it was one of the best day of my life" - anonymous</div>
+        </div>
+        <!-- Event photo 2 -->
+        <div class="slides fade">
+          <img src="../styles/carousel/Event2(v2).jpg" width="100%" alt="Event Photo 1"/>
+          <div class="caption-header">Welcome to Rockville</div>
+          <div class="caption-text">"It was one of the best experience me and my friends had." - anonymous</div>
+        </div>
+        <!-- Event photo 3 -->
+        <div class="slides fade">
+          <img src="../styles/carousel/Event3(v2).jpg" width="100%" alt="Event Photo 1"/>
+          <div class="caption-header">Firefly Music Festival</div>
+          <div class="caption-text">"... it was awesome and we are looking forward next year!" - anonymous</div>
+        </div>
+        <!-- Event photo 4 -->
+        <div class="slides fade">
+          <img src="../styles/carousel/Event4(v2).jpg" width="100%" alt="Event Photo 1"/>
+          <div class="caption-header">DJEKG 2018</div>
+          <div class="caption-text">"I would like to take this opportunity to thank DJEKG for this wonderful experience" - anonymous</div>
+        </div>
+        <!-- Next and previous buttons -->
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+      </div>
+      <!-- Image slider dots -->
+      <div id="image-slider-dots" style="text-align: center;">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+    <script src="../scripts/vue_app.js"></script>
+  </body>
+</html>
