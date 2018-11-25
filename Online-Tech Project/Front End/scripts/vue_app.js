@@ -1,3 +1,47 @@
+// Index page Vue application
+var index_vue = new Vue({
+  el: "#index-vue",
+  data: {
+    slideindex: 1,
+    slides: null,
+    dots: null
+  },
+  methods: {
+    nextslide: function(index) {
+      this.showslide(this.slideindex += index)
+    },
+    gotoslide: function(index) {
+      this.showslide(this.slideindex = index)
+    },
+    showslide: function(n) {
+      // initialization
+      this.slides = document.getElementsByClassName("slides");
+      this.dots = document.getElementsByClassName("dot");
+
+      if (n > this.slides.length) {
+        this.slideindex = 1;
+      }
+      if (n < 1) {
+        this.slideindex = this.slides.length;
+      }
+
+      for (var i = 0; i < this.slides.length; i++) {
+        this.slides[i].style.display = "none";
+      }
+      for (var i = 0; i < this.dots.length; i++) {
+        this.dots[i].className = this.dots[i].className.replace(" active", "")
+      }
+
+      this.slides[this.slideindex - 1].style.display = "block";
+      this.dots[this.slideindex - 1].className += " active"
+    }
+  },
+  mounted() {
+    this.showslide()
+  }
+});
+
+// Login page Vue application
 var login_vue = new Vue ({
   el: "#login_vue",
   data: {
@@ -55,6 +99,7 @@ var login_vue = new Vue ({
   }
 });
 
+// Admin page Vue Application
 var admin_vue = new Vue ({
   el: "#admin_vue",
   data: {
