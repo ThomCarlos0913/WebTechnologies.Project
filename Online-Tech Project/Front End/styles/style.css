@@ -20,6 +20,21 @@ body {
   src: url('fonts/ProximaNovaA-Black.woff2') format('woff2');
 }
 
+#header-button-container .header-menu-option {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "ProximaNovaBold";
+  padding: 17px;
+  margin: 0;
+  height: 50px;
+}
+
+#header-button-container .header-menu-option:hover {
+  color: tomato;
+}
+
 /* Index page Section */
 #image-slider-container {
   max-width: 2000px;
