@@ -21,3 +21,12 @@ insert into users_account (account_username, account_password, account_email, ac
 
 insert into users_account (account_username, account_password, account_email, account_privelege) 
 	values ('RalphOrtiz', 'ralph123', 'ralph@gmail.com', 2);
+
+CREATE TABLE event_details (
+    event_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    event_title VARCHAR(70),
+    event_date  DATE NOT NULL,
+    event_venue TEXT NOT NULL,
+    event_price INT NOT NULL,
+    event_description TEXT NOT NULL
+);
