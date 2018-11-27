@@ -32,6 +32,7 @@ body {
   padding: 17px;
   margin: 0;
   height: 50px;
+  transition: color 0.5s;
 }
 
 #header-button-container .header-menu-option:hover {
