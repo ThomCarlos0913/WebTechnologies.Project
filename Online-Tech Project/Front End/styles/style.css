@@ -243,29 +243,24 @@ body {
 }
 
 /* Admin Page Section */
-#menu-section {
-  background-color: #1a1a1a;
-  padding-top: 50px;
+#admin-dashboard {
+  height: 90px;
+  width: 100%;
+  background-color: #002133;
+  box-shadow: 3px 3px 3px gray;
+}
+
+#admin-dashboard .admin-menu-btn {
   float: left;
-  position:fixed;
-  width: 200px;
-  height: 100%;
+  color: white;
+  margin: 0px 0px;
+  height: 90px;
+  padding: 0px 15px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.5s;
 }
 
-#menu-section .menu-btn {
-  display: block;
-  text-decoration: None;
-  Color: White;
-  font-size: 16px;
-  padding: 10px;
-}
-
-#menu-section .menu-btn:hover {
-  background-color: #3399ff;
-}
-
-#menu-section .menu-icon {
-  margin-left: 5px;
-  margin-right: 10px;
-  margin-bottom: -5px;
+#admin-dashboard .admin-menu-btn:hover {
+  background: #005380;
 }
