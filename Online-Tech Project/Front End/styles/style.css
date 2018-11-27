@@ -115,11 +115,10 @@ body {
   font-style: italic;
   padding: 8px 12px;
   position: absolute;
-  bottom: 160px;
+  bottom: 110px;
   left: 200px;
   width: 100%;
 }
-
 
 @-webkit-keyframes fade {
   from {opacity: .4}
