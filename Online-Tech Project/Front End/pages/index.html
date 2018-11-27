@@ -11,7 +11,7 @@
     <div id="index-vue">
       <!-- Header -->
       <div style="height: 50px;">
-        <img src="../styles/icons/app_logo3.png" style="padding: 13px; margin-left: 150px"/>
+        <img src="../styles/icons/app_logo3.png" style="padding: 10px; margin-left: 150px"/>
         <div id="header-button-container" style="float: right; margin-right: 150px;">
           <a class="header-menu-option" style="color: tomato" href="https://www.google.com/">Home</a>
           <a class="header-menu-option" href="#">Events</a>
@@ -55,6 +55,19 @@
         <span v-on:click="gotoslide(2)" class="dot"></span>
         <span v-on:click="gotoslide(3)" class="dot"></span>
         <span v-on:click="gotoslide(4)" class="dot"></span>
+      </div>
+      <!-- Featured and passed event section -->
+      <div style="margin-top: 20px; height: 450px">
+        <!-- Featured section -->
+          <div class="section-header" style="float:left; width: 50%">
+          <h2 style="text-align:center">Featured Event</h2>
+        </div>
+        <!-- Vertical line divider -->
+        <div id="index-vertical-line"></div>
+        <!-- Passed event section -->
+        <div class="section-header" style="float: right; width: 50%">
+          <h2 style="text-align:center">Passed Events</h2>
+        </div>
       </div>
     </div>
     <script src="../scripts/vue_app.js"></script>
