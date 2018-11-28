@@ -131,6 +131,21 @@ body {
   to {opacity: 1}
 }
 
+.section-header h2 {
+  font-size: 18px;
+  font-family: ProximaNovaRg;
+  color: #404040;
+}
+
+#index-vertical-line {
+  height: 400px;
+  background-image: linear-gradient(white, gray, white);
+  width: 1px;
+  position: absolute;
+  left: 50%;
+  margin-left: -0.5px;
+}
+
 /* User Login Section*/
 #login-section {
   background-color: #00004d;
