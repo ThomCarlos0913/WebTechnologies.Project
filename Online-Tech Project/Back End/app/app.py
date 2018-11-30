@@ -78,7 +78,7 @@ def get_events():
 
     return jsonify(list_events)
 
-# update events
+# Update events
 @app.route('/update_event', methods=['GET'])
 def update_event():
     id = request.args.get('id', None)
@@ -96,6 +96,7 @@ def update_event():
     db.session.commit()
     return "200"
 
+# Delete Event
 @app.route('/delete_event', methods=['GET'])
 def delete_event():
     id = request.args.get('id', None)
