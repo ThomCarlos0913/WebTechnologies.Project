@@ -43,5 +43,40 @@ def register_account():
 
     return "500"
 
+# Create event
+@app.route('/create_event', methods=['POST'])
+def create_event():
+    payload = request.get_json()
+    e_name = payload.get('event_title', None)
+    e_time = payload.get('event_time', None)
+    e_location = payload.get('event_location', None)
+    e_details = payload.get('event_details', None)
+
+    new_event = Event(i_title = e_name,
+                      i_venue = e_location,
+                      i_time = e_time,
+                      i_details = e_details)
+    db.session.add(new_event)
+    db.session.commit()
+    return "200"
+
+# Get all events
+@app.route('/get_events', methods=['GET'])
+def get_events():
+    list_events = {}
+    event = {}
+    events = Event.query.all()
+    for e in events:
+        event = {
+            'id': e.id,
+            'title': e.title,
+            'venue': e.venue,
+            'time': e.time,
+            'details': e.details
+        }
+        list_events[e.id] = event
+
+    return jsonify(list_events)
+
 if __name__ == '__main__':
     app.run()
