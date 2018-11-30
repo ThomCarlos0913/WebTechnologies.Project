@@ -103,6 +103,76 @@ var login_vue = new Vue ({
 var admin_vue = new Vue ({
   el: "#admin_vue",
   data: {
-    message: "Hello Admin"
+    message: null,
+    panel_view: null,
+
+    event_name: null,
+    event_location: null,
+    event_time: null,
+    event_details: null,
+
+    update_id: null,
+    update_name: null,
+    update_location: null,
+    update_time: null,
+    update_detail: null,
+
+    event_list: null
+  },
+  methods: {
+    update_panel: function(panel_number) {
+      this.panel_view = panel_number
+
+      switch (panel_number) {
+        case 1:
+          document.getElementByID("create_btn").className += " admin_btn_active";
+          break;
+      }
+    },
+    create_event: function() {
+      if (this.event_name && this.event_location && this.event_time && this.event_details) {
+        axios.post('http://localhost:5000/create_event', {
+          event_title: this.event_name,
+          event_time: this.event_time,
+          event_location: this.event_location,
+          event_details: this.event_details
+        })
+        .then(response => {alert("Event created!")})
+      }
+      else {
+        alert("Please fill up all forms")
+      }
+    },
+    get_update_event: function(value, key) {
+      this.update_name = value['title']
+      this.update_location = value['venue']
+      this.update_time = value['time']
+      this.update_detail = value['details']
+      this.update_id = key
+    },
+    update_event: function() {
+      axios.get('http://localhost:5000/update_event', {
+        params: {
+          id: this.update_id,
+          title: this.update_name,
+          venue: this.update_location,
+          time: this.update_time,
+          details: this.update_detail
+        }
+      })
+    },
+    delete_event: function() {
+      axios.get('http://localhost:5000/delete_event', {
+        params: {
+          id: this.update_id
+        }
+      })
+      .then(response => {alert('Event Deleted!')})
+    }
+  },
+  mounted() {
+    axios.get('http://localhost:5000/get_events')
+    .then(response => {this.event_list = response.data})
   }
 });
+
