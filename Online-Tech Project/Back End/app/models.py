@@ -16,3 +16,18 @@ class User(db.Model):
         self.password = password
         self.email = email
         self.privelege = privelege
+
+# Event table template
+class Event(db.Model):
+    __tablename__ = Configuration.EVENT_TABLENAME
+    id = db.Column('event_id', db.Integer, primary_key=True)
+    title = db.Column('event_title', db.Unicode)
+    venue = db.Column('event_venue', db.Unicode)
+    time = db.Column('event_date', db.DATE)
+    details = db.Column('event_description', db.Unicode)
+
+    def __init__(self, i_title, i_time, i_venue, i_details):
+        self.title = i_title
+        self.venue = i_venue
+        self.time = i_time
+        self.details = i_details
