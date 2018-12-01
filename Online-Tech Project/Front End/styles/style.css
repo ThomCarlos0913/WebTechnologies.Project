@@ -279,3 +279,39 @@ body {
 #admin-dashboard .admin-menu-btn:hover {
   background: #005380;
 }
+
+#panel .admin_panel {
+  margin: 30px 30px;
+  font-family: ProximaNovaBold;
+  color: #333333;
+}
+
+.admin_btn_active {
+  background-color: red;
+}
+
+#panel .panel_textbox {
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px 0px;
+  width: 450px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+#panel #panel_textarea {
+  font-size: 22px;
+  padding: 5px;
+  margin: 5px 0px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  font-family: ProximaNovaRg;
+}
+
+.event_btn {
+  background-color: #a6a6a6;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
