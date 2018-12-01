@@ -12,22 +12,22 @@
       <!-- Admin Dashboard -->
       <div id="admin-dashboard" style="padding: 0px 20px">
         <!-- Create Event -->
-        <div class="admin-menu-btn">
+        <div class="admin-menu-btn" v-on:click="update_panel(1)">
           <img src="../styles/icons/new_event.png" alt="" style="margin-top: 15px;">
           <p style="margin-top: 0px;">Create Event</p>
         </div>
         <!-- Update Event -->
-        <div class="admin-menu-btn">
+        <div class="admin-menu-btn" v-on:click="update_panel(2)">
           <img src="../styles/icons/update_event.png" alt="" style="margin-top: 15px;">
           <p style="margin-top: 0px;">Update Event</p>
         </div>
         <!-- Delete Event -->
-        <div class="admin-menu-btn">
+        <div class="admin-menu-btn" v-on:click="update_panel(3)">
           <img src="../styles/icons/delete_event.png" alt="" style="margin-top: 15px;">
           <p style="margin-top: 0px;">Delete Event</p>
         </div>
         <!-- Update Featured -->
-        <div class="admin-menu-btn">
+        <div class="admin-menu-btn" v-on:click="update_panel(4)">
           <img src="../styles/icons/edit_featured.png" alt="" style="margin-top: 15px;">
           <p style="margin-top: 0px;">Update Featured</p>
         </div>
