@@ -24,7 +24,7 @@ body {
 }
 
 #header-button-container .header-menu-option {
-  color: black;
+  color: white;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
@@ -134,12 +134,12 @@ body {
 .section-header h2 {
   font-size: 18px;
   font-family: ProximaNovaRg;
-  color: #404040;
+  color: #d9d9d9;
 }
 
 #index-vertical-line {
   height: 400px;
-  background-image: linear-gradient(white, gray, white);
+  background-image: linear-gradient(#1a1a1a, gray, #1a1a1a);
   width: 1px;
   position: absolute;
   left: 50%;
