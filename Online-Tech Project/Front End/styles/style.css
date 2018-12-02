@@ -315,3 +315,45 @@ body {
   padding: 10px;
   border-radius: 5px;
 }
+
+/* Developer Section */
+#developer-container {
+  -webkit-animation-name: "developer-fade";
+  animation-name: "developer-fade";
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes developer-fade{
+  from {margin-top: 200px; opacity: 0}
+  to {margin-top: 70px; opacity: 1}
+}
+
+@keyframes developer-fade {
+  from {margin-top: 200px; opacity: 0}
+  to {margin-top: 70px; opacity: 1}
+}
+
+#developer-section h1 {
+  font-family: ProximaNovaBold;
+  color: #d9d9d9;
+  margin-left: 50px;
+}
+
+#developer-section .developer-image {
+  left: 50%;
+  margin-left: -100px;
+  position: relative;
+}
+
+#developer-section .developer-name {
+  font-family: ProximaNovaBold;
+  color: #e6e6e6;
+  text-align: center;
+}
+
+#developer-section .developer-contact {
+  font-family: ProximaNovaLight;
+  font-style: italic;
+  color: #8c8c8c;
+  text-align: center;
+}
