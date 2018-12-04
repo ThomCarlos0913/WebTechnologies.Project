@@ -57,7 +57,8 @@ def create_event():
     new_event = Event(i_title = e_name,
                       i_venue = e_location,
                       i_time = e_time,
-                      i_details = e_details)
+                      i_details = e_details,
+                      i_passed = 1)
     db.session.add(new_event)
     db.session.commit()
     return "200"
@@ -94,6 +95,21 @@ def update_event():
     event.venue = venue
     event.time = time
     event.details = details
+
+    db.session.commit()
+    return "200"
+
+# Update events
+@app.route('/update_featured', methods=['GET'])
+def update_featured():
+    id = request.args.get('id', None)
+    event = Event.query.get(id)
+    current_featured = Featured.query.first()
+
+    current_featured.title = event.title
+    current_featured.venue = event.venue
+    current_featured.time = event.time
+    current_featured.details = event.details
 
     db.session.commit()
     return "200"

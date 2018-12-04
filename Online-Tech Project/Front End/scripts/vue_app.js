@@ -115,7 +115,7 @@ var admin_vue = new Vue ({
   el: "#admin_vue",
   data: {
     message: null,
-    panel_view: null,
+    panel_view: 1,
 
     event_name: null,
     event_location: null,
@@ -179,6 +179,14 @@ var admin_vue = new Vue ({
         }
       })
       .then(response => {alert('Event Deleted!')})
+    },
+    update_featured: function() {
+      axios.get('http://localhost:5000/update_featured', {
+        params: {
+          id: this.update_id
+        }
+      })
+      .then(response => {alert('Featured Event Updated!')})
     }
   },
   mounted() {

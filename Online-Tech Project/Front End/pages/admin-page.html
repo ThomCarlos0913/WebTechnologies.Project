@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../styles/style.css" />
     <link rel="icon" href="../styles/icons/site_icon.png" />
   </head>
-  <body>
+  <body style="background-color: #1a1a1a;">
     <div id="admin_vue">
       <!-- Admin Dashboard -->
       <div id="admin-dashboard" style="padding: 0px 20px">
@@ -60,7 +60,7 @@
               <p class="event_btn" v-on:click="get_update_event(value, key)">{{value['title']}}</p>
             </template>
           </div>
-          <div style="float: right; width: 60%;" class="">
+          <div style="float: right; width: 60%;">
             <input v-model="update_name" class="panel_textbox" type="text" placeholder="Event Name"/><br />
             <input v-model="update_location" class="panel_textbox" type="text" placeholder="Event Location"/><br />
             <input v-model="update_time" class="panel_textbox" type="text" placeholder="Event Time"/><br />
@@ -72,22 +72,34 @@
         <!-- Delete Event -->
         <div v-show="panel_view == 3" class="admin_panel">
           <h1>Delete Event</h1>
-          <div style="float: left; width: 38%; height: 400px; overflow: auto;" class="">
+          <div style="float: left; width: 38%; height: 400px; overflow: auto;" >
             <template v-for="(value, key) in event_list">
               <p class="event_btn" v-on:click="get_update_event(value, key)">{{value['title']}}</p>
             </template>
           </div>
-          <div style="float: right; width: 60%;" class="">
-            <p>Event Name: <br /> {{update_name}}</p>
-            <p>Event Location: <br /> {{update_location}}</p>
-            <p>Event Time: <br /> {{update_time}}</p>
-            <p>Event Details: <br /> {{update_detail}}</p>
+          <div style="float: right; width: 60%;" class="delete_panel">
+            <p><span class="detail_spec">Event Name</span> <br /> {{update_name}}</p>
+            <p><span class="detail_spec">Event Venue</span> <br /> {{update_location}}</p>
+            <p><span class="detail_spec">Event Time</span> <br /> {{update_time}}</p>
+            <p><span class="detail_spec">Event Detail</span> <br /> {{update_detail}}</p>
             <button v-on:click="delete_event" type="button">Delete</button>
           </div>
         </div>
         <!-- Update Featured Event -->
         <div v-show="panel_view == 4" class="admin_panel">
           <h1>Update Featured Event</h1>
+          <div style="float: left; width: 38%; height: 400px; overflow: auto;" class="">
+            <template v-for="(value, key) in event_list">
+              <p class="event_btn" v-on:click="get_update_event(value, key)">{{value['title']}}</p>
+            </template>
+          </div>
+          <div style="float: right; width: 60%;" class="delete_panel">
+            <p><span class="detail_spec">Event Name</span> <br /> {{update_name}}</p>
+            <p><span class="detail_spec">Event Venue</span> <br /> {{update_location}}</p>
+            <p><span class="detail_spec">Event Time</span> <br /> {{update_time}}</p>
+            <p><span class="detail_spec">Event Detail</span> <br /> {{update_detail}}</p>
+            <button v-on:click="update_featured" type="button">Update Featured</button>
+          </div>
         </div>
       </div>
     </div>

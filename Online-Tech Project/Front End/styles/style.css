@@ -187,8 +187,8 @@ body {
 
 /* User Login Section*/
 #login-section {
-  background-color: #00004d;
-  box-shadow: 5px 5px 10px #595959;
+  background-color: #00334d;
+  box-shadow: 5px 5px 10px #0d0d0d;
   position: fixed;
   color: white;
   height: 100%;
@@ -201,7 +201,7 @@ body {
   border: 0;
   border-bottom: 2px white solid;
   font-family: "ProximaNovaRg";
-  background-color: #00004d;
+  background-color: #00334d;
   font-family: Arial;
   font-size: 20px;
   color: white;
@@ -240,17 +240,18 @@ body {
   font-size: 48px;
   font-family: 'ProximaNovaBold';
   margin: 0;
-  color: #00004d;
+  color: white;
 }
 
 #login-message-section p {
   font-size: 18px;
   min-width: 300px;
   max-width: 600px;
+  color: #e6e6e6;
 }
 #login-message-section button {
   border: 0;
-  background-color: #00004d;
+  background-color: #00334d;
   color: white;
   font-size: 20px;
   width: 250px;
@@ -301,7 +302,7 @@ body {
   height: 90px;
   width: 100%;
   background-color: #002133;
-  box-shadow: 3px 3px 3px gray;
+  box-shadow: 3px 3px 3px #0d0d0d;
 }
 
 #admin-dashboard .admin-menu-btn {
@@ -316,13 +317,17 @@ body {
 }
 
 #admin-dashboard .admin-menu-btn:hover {
-  background: #005380;
+  background: #00334d;
 }
 
 #panel .admin_panel {
   margin: 30px 30px;
   font-family: ProximaNovaBold;
   color: #333333;
+}
+
+.admin_panel h1 {
+  color: white;
 }
 
 .admin_btn_active {
@@ -348,11 +353,20 @@ body {
 }
 
 .event_btn {
-  background-color: #a6a6a6;
+  background-color: #00334d;
   cursor: pointer;
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
+  color: white;
+}
+
+.detail_spec {
+  color: #8c8c8c;
+}
+
+.delete_panel p {
+  color: White;
 }
 
 /* Developer Section */
