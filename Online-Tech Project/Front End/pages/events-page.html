@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Mania | About Us</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/style.css" />
+    <link rel="icon" href="../styles/icons/site_icon.png" />
+  </head>
+  <body style="background-color: #1a1a1a;">
+    <div id="events_vue">
+      <!-- Header -->
+      <div style="height: 50px; background-color: #00334d">
+        <img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px"/>
+        <div id="header-button-container" style="float: right; margin-right: 150px;">
+          <a class="header-menu-option" href="index.html">Home</a>
+          <a class="header-menu-option" style="color: tomato" href="#">Events</a>
+          <a class="header-menu-option" href="about-us.html">About Us</a>
+          <a class="header-menu-option" href="login-page.html">Login</a>
+        </div>
+      </div>
+      <!-- Events Section -->
+      <div >
+        <div style="height: 50px; background-color: gray; margin-bottom: 20px; padding: 0px 200px 0px 200px;">
+          <div id="header-button-container" >
+            <a class="header-menu-option" style="float: left">Upcoming Events</a>
+            <a class="header-menu-option" href="#" style="float: right">My Events</a>
+          </div>
+        </div>
+        <template v-for="(value, key) in event_template">
+          <div style="left: 50%; width: 1000px; position: relative; margin-left: -500px;">
+            <div style="height:1px; background-color: tomato;"></div>
+            <div id="featured-container" style="width: 90%;">
+              <h1>{{value['title']}}</h1>
+              <p id="venue">{{value['venue']}}</p>
+              <p id="time">{{value['time']}}</p>
+              <button style="margin-top: 10px;">View Details</button>
+              <button class="join-btn">Join Event</button>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <script src="../scripts/vue_app.js"></script>
+  </body>
+</html>

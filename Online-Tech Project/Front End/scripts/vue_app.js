@@ -194,3 +194,20 @@ var admin_vue = new Vue ({
     .then(response => {this.event_list = response.data})
   }
 });
+
+// Event Page Vue application
+var event_page = new Vue({
+  el: "#events_vue",
+  data: {
+    event_template: {
+      'title': '',
+      'venue': '',
+      'time': '',
+      'details': ''
+    }
+  },
+  mounted() {
+    axios.get('http://localhost:5000/get_upcoming_event')
+    .then(response => {this.event_template = response.data; this.event_template['time'] = this.event_template['time'].toDateString()})
+  }
+})

@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, url_for
 from init_db import DbInitData
 from models import *
 import atexit
+import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = Configuration.SQLALCHEMY_DATABASE_URI
@@ -155,6 +156,24 @@ def get_featured():
     }
 
     return jsonify(featured_event)
+
+# Get upcoming events
+@app.route('/get_upcoming_event', methods=['GET'])
+def get_upcoming_event():
+    list_events = {}
+    event = {}
+    events = Event.query.filter(Event.isPassed == 0).all()
+    for e in events:
+        event = {
+            'id': e.id,
+            'title': e.title,
+            'venue': e.venue,
+            'time': e.time,
+            'details': e.details
+        }
+        list_events[e.id] = event
+
+    return jsonify(list_events)
 
 # General routines section
 ##########################
