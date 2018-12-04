@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, url_for
+from init_db import DbInitData
 from models import *
+import atexit
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = Configuration.SQLALCHEMY_DATABASE_URI
@@ -105,6 +107,73 @@ def delete_event():
     db.session.commit()
     return "200"
 
+# Get Passed Event
+@app.route('/get_passed_events', methods=['GET'])
+def get_passed_events():
+    passed_event_dict = {}
+    event = {}
+
+    passed_events = Event.query.filter(Event.isPassed == 1).all()
+    for e in passed_events:
+        event = {
+            'id': e.id,
+            'title': e.title,
+            'venue': e.venue,
+            'time': e.time,
+            'details': e.details
+        }
+        passed_event_dict[e.id] = event
+
+    return jsonify(passed_event_dict)
+
+# Get Featured Event
+@app.route('/get_featured', methods=['GET'])
+def get_featured():
+    event = Featured.query.first()
+    featured_event = {
+        'id': event.id,
+        'title': event.title,
+        'venue': event.venue,
+        'time': event.time,
+        'details': event.details
+    }
+
+    return jsonify(featured_event)
+
+# General routines section
+##########################
+
+# Initialize database and db content
+@app.before_first_request
+def init_db():
+    # Initialize tables
+    db.create_all()
+
+    # Fetch data from init_db
+    db_data = DbInitData.fetch_data()
+
+    # Insert and commit data in database
+    for admin in db_data[0]:
+        db.session.add(admin)
+    for event in db_data[1]:
+        db.session.add(event)
+    db.session.add(db_data[2])
+
+    db.session.commit()
+    print("\n --------------------------\n")
+    print(" * Admin accounts registered")
+    print(" * Event details registered")
+    print("\n --------------------------\n")
+
+def delete_db():
+    with app.app_context():
+        db.drop_all()
+    print("\n --------------------------\n")
+    print(" * Database connection teared down")
+    print("\n --------------------------\n")
+
+# Teardown database connection
+atexit.register(delete_db)
+
 if __name__ == '__main__':
     app.run()
-

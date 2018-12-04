@@ -138,13 +138,52 @@ body {
 }
 
 #index-vertical-line {
-  height: 400px;
+  height: 370px;
   background-image: linear-gradient(#1a1a1a, gray, #1a1a1a);
   width: 1px;
   position: absolute;
   left: 50%;
   margin-left: -0.5px;
 }
+
+.passed_btn {
+  background-color: #00334d;
+  font-family: ProximaNovaRg;
+  cursor: pointer;
+  margin: 15px;
+  position: relative;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+#featured-container {
+  margin: 30px;
+}
+
+#featured-container p {
+  margin: 5px;
+}
+
+#featured-container h1 {
+  font-family: ProximaNovaBold;
+  color: white;
+  margin-bottom: 0px;
+}
+
+#featured-container #details {
+  font-family: ProximaNovaRg;
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+}
+
+#featured-container #venue, #time {
+  font-family: ProximaNovaLight;
+  font-style: italic;
+  color: gray;
+}
+
 
 /* User Login Section*/
 #login-section {
@@ -339,6 +378,10 @@ body {
   margin-left: 50px;
 }
 
+#developer-container p {
+  margin: 0px;
+}
+
 #developer-section .developer-image {
   left: 50%;
   margin-left: -100px;
@@ -349,6 +392,7 @@ body {
   font-family: ProximaNovaBold;
   color: #e6e6e6;
   text-align: center;
+  margin: 10px;
 }
 
 #developer-section .developer-contact {

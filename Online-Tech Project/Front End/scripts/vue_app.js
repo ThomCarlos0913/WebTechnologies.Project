@@ -4,7 +4,14 @@ var index_vue = new Vue({
   data: {
     slideindex: 1,
     slides: null,
-    dots: null
+    dots: null,
+    list_passed: null,
+    featured_event: {
+      'title':'',
+      'venue':'',
+      'time':'',
+      'details':'',
+    }
   },
   methods: {
     nextslide: function(index) {
@@ -38,6 +45,10 @@ var index_vue = new Vue({
   },
   mounted() {
     this.showslide()
+    axios.get("http://localhost:5000/get_passed_events")
+    .then(response => {this.list_passed = response.data})
+    axios.get("http://localhost:5000/get_featured")
+    .then(response => {this.featured_event = response.data})
   }
 });
 
@@ -175,4 +186,3 @@ var admin_vue = new Vue ({
     .then(response => {this.event_list = response.data})
   }
 });
-

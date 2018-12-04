@@ -11,7 +11,7 @@
     <div id="index-vue">
       <!-- Header -->
       <div style="height: 50px; background-color: #00334d">
-        <img src="../styles/icons/app_logo3.png" style="padding: 10px; margin-left: 150px"/>
+        <img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px"/>
         <div id="header-button-container" style="float: right; margin-right: 150px;">
           <a class="header-menu-option" style="color: tomato" href="index.html">Home</a>
           <a class="header-menu-option" href="#">Events</a>
@@ -59,14 +59,23 @@
       <!-- Featured and passed event section -->
       <div style="margin-top: 20px; height: 450px">
         <!-- Featured section -->
-          <div class="section-header" style="float:left; width: 50%">
+        <div class="section-header" style="float:left; width: 50%">
           <h2 style="text-align:center">Featured Event</h2>
+          <div id="featured-container">
+            <h1>{{featured_event['title']}}</h1>
+            <p id="venue">{{featured_event['venue']}}</p>
+            <p id="time">{{featured_event['time']}}</p>
+            <p id="details">{{featured_event['details']}}</p>
+          </div>
         </div>
         <!-- Vertical line divider -->
         <div id="index-vertical-line"></div>
         <!-- Passed event section -->
         <div class="section-header" style="float: right; width: 50%">
           <h2 style="text-align:center">Passed Events</h2>
+          <template v-for="(value, key) in list_passed">
+            <p class="passed_btn">{{value['title']}}</p>
+          </template>
         </div>
       </div>
     </div>
