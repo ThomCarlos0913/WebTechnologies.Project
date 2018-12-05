@@ -432,3 +432,15 @@ body {
   font-family: ProximaNovaBold;
   background-color: #00334d;
 }
+
+.event-header-btn {
+  float: left;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+  font-size: 16px;
+  width: 50%;
+  font-family: ProximaNovaBold;
+  color: white;
+  padding: 10px;
+}

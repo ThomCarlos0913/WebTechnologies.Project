@@ -50,3 +50,14 @@ class Featured(db.Model):
         self.time = i_time
         self.details = i_details
         self.isPassed = i_passed
+
+# User Events table template
+class UserEvents(db.Model):
+    __tablename__ = Configuration.USEREVENTS_TABLENAME
+    id = db.Column('log_id', db.Integer, primary_key=True)
+    user_id = db.Column('user_id', db.Integer)
+    event_id = db.Column('event_id', db.Integer)
+
+    def __init__(self, u_id, e_id):
+        self.user_id = u_id
+        self.event_id = e_id

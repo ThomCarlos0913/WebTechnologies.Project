@@ -20,13 +20,15 @@
         </div>
       </div>
       <!-- Events Section -->
-      <div >
-        <div style="height: 50px; background-color: gray; margin-bottom: 20px; padding: 0px 200px 0px 200px;">
-          <div id="header-button-container" >
-            <a class="header-menu-option" style="float: left">Upcoming Events</a>
-            <a class="header-menu-option" href="#" style="float: right">My Events</a>
-          </div>
+      <div style="margin-bottom: 80px;">
+        <div class="event-header-btn" style="border-right: 1px solid gray; ">
+          Upcoming Events
         </div>
+        <div class="event-header-btn">
+          My Events
+        </div>
+      </div>
+      <div>
         <template v-for="(value, key) in event_template">
           <div style="left: 50%; width: 1000px; position: relative; margin-left: -500px;">
             <div style="height:1px; background-color: tomato;"></div>

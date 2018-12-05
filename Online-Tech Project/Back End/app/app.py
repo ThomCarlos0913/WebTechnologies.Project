@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify, url_for
 from init_db import DbInitData
 from models import *
-import atexit
 import datetime
+
+import click
+from flask.cli import FlaskGroup
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = Configuration.SQLALCHEMY_DATABASE_URI
@@ -178,9 +180,13 @@ def get_upcoming_event():
 # General routines section
 ##########################
 
+@click.group(cls=FlaskGroup, create_app=lambda: app)
+def cli():
+    """Management script for the flask application."""
+
 # Initialize database and db content
-@app.before_first_request
-def init_db():
+@cli.command('init_db')
+def hello():
     # Initialize tables
     db.create_all()
 
@@ -200,6 +206,7 @@ def init_db():
     print(" * Event details registered")
     print("\n --------------------------\n")
 
+@cli.command('drop_db')
 def delete_db():
     with app.app_context():
         db.drop_all()
@@ -207,8 +214,6 @@ def delete_db():
     print(" * Database connection teared down")
     print("\n --------------------------\n")
 
-# Teardown database connection
-atexit.register(delete_db)
 
 if __name__ == '__main__':
-    app.run()
+    cli()
