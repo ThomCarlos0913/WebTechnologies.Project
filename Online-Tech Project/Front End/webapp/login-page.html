@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login to your account</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="icon" href="styles/icons/site_icon.png" />
+  </head>
+  <body style="background-color: #1a1a1a;">
+    <div id="login_vue">
+      <!-- Login Section -->
+      <div style="float:left; height:100px; width: 400px;">
+        <div id="login-section">
+          <div style="margin: 75px 55px;">
+            <h1 style="margin-bottom: 35px; font-family: 'ProximaNovaBold'">Login to your account</h1>
+            <input class="login-textbox" type="text" placeholder="Username" v-model="username" /><br />
+            <input class="login-textbox" type="password" placeholder="Password" v-model="password" /><br />
+            <button v-on:click="verifyaccount">Login</button>
+            <a href="#">Forgot password?</a>
+            <p>{{test}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Welcome message -->
+      <div id="login-message-section" style="float: left">
+        <div id="message-container">
+          <h1>Welcome!</h1>
+          <p>We are an organization that aims to help the party people and those<br />
+          who really enjoy social events, by becoming a virtual banner for future<br />
+          event of an organization and serving as a helper for the people world<br/>
+          wide who wants to be updated in future events.</p>
+          <button v-on:click="displaysignup">Register an account</button>
+        </div>
+      </div>
+      <!-- Signup overlay -->
+      <div id="signup-overlay" v-show="show_signup">
+        <div id="signup-container">
+          <div style="margin:30px 35px;">
+            <p style="text-align: center;">Please enter required information</p>
+            <input class="signup-textbox" type="text" placeholder="Username" v-model="signup_username"/><br />
+            <input class="signup-textbox" type="password" placeholder="Password" v-model="signup_password"/><br />
+            <input class="signup-textbox" type="password" placeholder="Confirm Password" v-model="signup_confirmpass"/><br />
+            <input class="signup-textbox" type="text" placeholder="Email" v-model="signup_email"/><br />
+            <button style="background-color: #007399; color: white; margin-top: 15px" class="signup-button" v-on:click="registeraccount">Register Account</button><br />
+            <button style="background-color: #ff6666; color: white; margin-top: 10px;" class="signup-button" v-on:click="hidesignup">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/vue_app.js"></script>
+  </body>
+</html>
