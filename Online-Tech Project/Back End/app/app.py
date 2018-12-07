@@ -12,11 +12,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = Configuration.SQLALCHEMY_DATABASE_URI
 app.config['SECRET_KEY'] = 'groupionlinetech'
 db.init_app(app)
 
-# Get token
-@app.route('/get_token', methods=['GET'])
-def get_token():
-    return str(request.authorization.username)
-
 # Validate entered info on login form
 @app.route('/validate_account', methods=['GET'])
 def validate_account():
@@ -26,10 +21,65 @@ def validate_account():
         if auth and auth.username == account.username and check_password_hash(account.password, auth.password):
             # create token
             token = jwt.encode({'id':account.id, 'user':account.username, 'exp':50000}, app.config['SECRET_KEY'])
-            return jsonify({'code':'200','id': account.id, 'user':account.username})
+            return jsonify({'code':'200','id': account.id, 'user':account.username, 'privelege':account.privelege})
     else:
         return 'Username or password is incorrect'
     return '500'
+
+# Subscribe to an Event
+@app.route('/subscribe_event', methods=['POST'])
+def subscribe_event():
+    payload = request.get_json()
+    u_id = payload.get('u_id', None)
+    ev_id = payload.get('e_id', None)
+    e_name = payload.get('i_title', None)
+    e_time = payload.get('i_time', None)
+    e_location = payload.get('i_venue', None)
+    e_details = payload.get('i_details', None)
+
+    queried_account = UserEvents.query.filter(UserEvents.user_id == u_id, UserEvents.event_id == ev_id).all()
+    if queried_account:
+        return "500"
+
+    sub_event = UserEvents(u_id = u_id,
+                           e_id = ev_id,
+                           i_title = e_name,
+                           i_venue = e_location,
+                           i_time = "2018-10-10",
+                           i_details = e_details,)
+    db.session.add(sub_event)
+    db.session.commit()
+
+    return '200'
+
+# Unsubscribe to an event
+@app.route('/unsubscribe_event', methods=['GET'])
+def unsubscribe_event():
+    ev_id = request.args.get('event_id', None)
+    event = UserEvents.query.get(ev_id)
+    db.session.delete(event)
+    db.session.commit()
+    return "200"
+
+# Get subscribed events
+@app.route('/get_my_events', methods=['GET'])
+def get_my_events():
+    u_id = request.args.get('user_id', 0)
+    test = int(u_id)
+    list_events = {}
+    event = {}
+    events = UserEvents.query.filter(UserEvents.user_id == u_id).all()
+    for e in events:
+        event = {
+            'user_id': e.user_id,
+            'title': e.title,
+            'venue': e.venue,
+            'time': str(e.time),
+            'details': e.details
+        }
+        list_events[e.id] = event
+
+    return jsonify(list_events)
 
 # Register user
 @app.route('/register_acount',methods=['POST'])
@@ -45,7 +95,7 @@ def register_account():
         return "409"
     else:
         new_user = User(username = s_username,
-                        password = s_password,
+                        password = generate_password_hash(s_password),
                         email = s_email,
                         privelege = 1)
         db.session.add(new_user)
@@ -176,7 +226,7 @@ def get_upcoming_event():
             'id': e.id,
             'title': e.title,
             'venue': e.venue,
-            'time': e.time,
+            'time': str(e.time),
             'details': e.details
         }
         list_events[e.id] = event

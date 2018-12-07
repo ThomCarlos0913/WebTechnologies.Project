@@ -63,7 +63,7 @@
           <div style="float: right; width: 60%;">
             <input v-model="update_name" class="panel_textbox" type="text" placeholder="Event Name"/><br />
             <input v-model="update_location" class="panel_textbox" type="text" placeholder="Event Location"/><br />
-            <input v-model="update_time" class="panel_textbox" type="text" placeholder="Event Time"/><br />
+            <input v-model="update_time" class="panel_textbox" type="text" placeholder="Event Time (YYYY-MM-DD)"/><br />
             <textarea v-model="update_detail" id="panel_textarea" style="width: 100%" name="name" rows="8" cols="80" placeholder="Event Details"></textarea><br />
             <button v-on:click="update_event" type="button">Update</button>
             <button type="button">Cancel</button>

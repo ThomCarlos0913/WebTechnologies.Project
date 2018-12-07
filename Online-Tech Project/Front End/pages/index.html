@@ -11,7 +11,8 @@
     <div id="index-vue">
       <!-- Header -->
       <div style="height: 50px; background-color: #00334d">
-        <img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px"/>
+        <a href="admin-page.html" v-show="t_privelege == 2"><img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px"/></a>
+        <img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px" v-show="t_privelege != 2"/>
         <div id="header-button-container" style="float: right; margin-right: 150px;">
           <a class="header-menu-option" style="color: tomato" href="index.html">Home</a>
           <a class="header-menu-option" href="events-page.html">Events</a>

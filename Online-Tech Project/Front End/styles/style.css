@@ -444,3 +444,16 @@ body {
   color: white;
   padding: 10px;
 }
+
+#login-to-view h1 {
+  text-align: center;
+  font-family: ProximaNovaBold;
+  color: white;
+  margin-top: 200px;
+}
+
+#login-to-view p {
+  text-align: center;
+  font-family: ProximaNovaLight;
+  color: #a6a6a6 ;
+}

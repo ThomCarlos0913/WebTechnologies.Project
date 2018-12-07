@@ -11,7 +11,8 @@
     <div id="events_vue">
       <!-- Header -->
       <div style="height: 50px; background-color: #00334d">
-        <img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px"/>
+        <a href="admin-page.html" v-show="t_privelege == 2"><img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px"/></a>
+        <img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px" v-show="t_privelege != 2"/>
         <div id="header-button-container" style="float: right; margin-right: 150px;">
           <a class="header-menu-option" href="index.html">Home</a>
           <a class="header-menu-option" style="color: tomato" href="#">Events</a>
@@ -22,14 +23,15 @@
       </div>
       <!-- Events Section -->
       <div style="margin-bottom: 80px;">
-        <div class="event-header-btn" style="border-right: 1px solid gray; ">
+        <div class="event-header-btn" style="border-right: 1px solid gray; " v-on:click="updateeventpanel(1)">
           Upcoming Events
         </div>
-        <div class="event-header-btn">
+        <div class="event-header-btn" v-on:click="updateeventpanel(2)">
           My Events
         </div>
       </div>
-      <div>
+      <!-- Upcoming Events -->
+      <div v-show="event_panel == 1">
         <template v-for="(value, key) in event_template">
           <div style="left: 50%; width: 1000px; position: relative; margin-left: -500px;">
             <div style="height:1px; background-color: tomato;"></div>
@@ -38,10 +40,33 @@
               <p id="venue">{{value['venue']}}</p>
               <p id="time">{{value['time']}}</p>
               <button style="margin-top: 10px;">View Details</button>
-              <button class="join-btn">Join Event</button>
+              <button class="join-btn" v-on:click="subscribeevent(key, value['title'], value['time'], value['venue'], value['details'])">Join Event</button>
             </div>
           </div>
         </template>
+      </div>
+      <!-- Upcoming Events -->
+      <div v-show="event_panel == 2">
+        <!-- Show if not logged in -->
+        <div id="login-to-view" v-show="!t_taken">
+          <h1>Login to view your events</h1>
+          <p>My Events panel is for registered member only.</p>
+        </div>
+        <!-- Show if logged in -->
+        <div v-show="t_taken">
+          <template v-for="(value, key) in event_template">
+            <div style="left: 50%; width: 1000px; position: relative; margin-left: -500px;">
+              <div style="height:1px; background-color: tomato;"></div>
+              <div id="featured-container" style="width: 90%;">
+                <h1>{{value['title']}}</h1>
+                <p id="venue">{{value['venue']}}</p>
+                <p id="time">{{value['time']}}</p>
+                <button style="margin-top: 10px;">View Details</button>
+                <button class="join-btn" v-on:click="unsubscribe(key)">Unsubscribe</button>
+              </div>
+            </div>
+          </template>
+        </div>
       </div>
     </div>
     <script src="../scripts/vue_app.js"></script>

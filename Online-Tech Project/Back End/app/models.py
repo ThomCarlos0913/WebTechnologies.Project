@@ -57,7 +57,15 @@ class UserEvents(db.Model):
     id = db.Column('log_id', db.Integer, primary_key=True)
     user_id = db.Column('user_id', db.Integer)
     event_id = db.Column('event_id', db.Integer)
+    title = db.Column('event_title', db.Text)
+    venue = db.Column('event_venue', db.Text)
+    time = db.Column('event_date', db.DATE)
+    details = db.Column('event_description', db.Text)
 
-    def __init__(self, u_id, e_id):
+    def __init__(self, u_id, e_id, i_title, i_time, i_venue, i_details):
         self.user_id = u_id
         self.event_id = e_id
+        self.title = i_title
+        self.venue = i_venue
+        self.time = i_time
+        self.details = i_details

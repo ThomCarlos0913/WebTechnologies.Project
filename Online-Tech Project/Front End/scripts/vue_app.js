@@ -14,7 +14,8 @@ var index_vue = new Vue({
     },
     t_username: localStorage.getItem('user'),
     t_id: localStorage.getItem('id'),
-    t_taken: localStorage.getItem('isTaken')
+    t_taken: localStorage.getItem('isTaken'),
+    t_privelege: localStorage.getItem('privelege'),
   },
   methods: {
     nextslide: function(index) {
@@ -72,7 +73,8 @@ var login_vue = new Vue ({
     signup_email: null,
     t_username: localStorage.getItem('user'),
     t_id: localStorage.getItem('id'),
-    t_taken: localStorage.getItem('isTaken')
+    t_taken: localStorage.getItem('isTaken'),
+    t_privelege: localStorage.getItem('privelege'),
   },
   methods: {
     displaysignup: function() {
@@ -92,7 +94,8 @@ var login_vue = new Vue ({
       .then(response => {if (response.data['code'] == '200') {
         localStorage.setItem('isTaken', '1')
         localStorage.setItem('user', response.data['user'])
-        localStorage.setItem('id', response.data['id'])
+        localStorage.setItem('id', parseInt(response.data['id']))
+        localStorage.setItem('privelege', parseInt(response.data['privelege']))
         window.location.href = '../pages/index.html';
       }
     else {
@@ -146,7 +149,8 @@ var admin_vue = new Vue ({
     event_list: null,
     t_username: localStorage.getItem('user'),
     t_id: localStorage.getItem('id'),
-    t_taken: localStorage.getItem('isTaken')
+    t_taken: localStorage.getItem('isTaken'),
+    t_privelege: localStorage.getItem('privelege'),
   },
   methods: {
     update_panel: function(panel_number) {
@@ -166,7 +170,7 @@ var admin_vue = new Vue ({
           event_location: this.event_location,
           event_details: this.event_details
         })
-        .then(response => {alert("Event created!")})
+        .then(response => {alert("Event created!"); document.location.reload(true)})
       }
       else {
         alert("Please fill up all forms")
@@ -189,6 +193,7 @@ var admin_vue = new Vue ({
           details: this.update_detail
         }
       })
+      .then(response => {alert('Event Successfully Updated!'); document.location.reload(true)})
     },
     delete_event: function() {
       axios.get('http://localhost:5000/delete_event', {
@@ -196,7 +201,7 @@ var admin_vue = new Vue ({
           id: this.update_id
         }
       })
-      .then(response => {alert('Event Deleted!')})
+      .then(response => {alert('Event Sucessfully Deleted!'); document.location.reload(true)})
     },
     update_featured: function() {
       axios.get('http://localhost:5000/update_featured', {
@@ -204,7 +209,7 @@ var admin_vue = new Vue ({
           id: this.update_id
         }
       })
-      .then(response => {alert('Featured Event Updated!')})
+      .then(response => {alert('Featured Event Updated!'); document.location.reload(true)})
     }
   },
   mounted() {
@@ -219,7 +224,8 @@ var about_page = new Vue({
   data: {
     t_username: localStorage.getItem('user'),
     t_id: localStorage.getItem('id'),
-    t_taken: localStorage.getItem('isTaken')
+    t_taken: localStorage.getItem('isTaken'),
+    t_privelege: localStorage.getItem('privelege'),
   },
   methods: {
     logoutaccount: function() {
@@ -239,18 +245,67 @@ var event_page = new Vue({
       'time': '',
       'details': ''
     },
+    event_panel: 1,
     t_username: localStorage.getItem('user'),
     t_id: localStorage.getItem('id'),
-    t_taken: localStorage.getItem('isTaken')
+    t_taken: localStorage.getItem('isTaken'),
+    t_privelege: localStorage.getItem('privelege'),
+    test: typeof(parseInt(this.t_id))
   },
   methods: {
     logoutaccount: function() {
       localStorage.clear();
       window.location.href = '../pages/index.html';
+    },
+    updateeventpanel: function(n) {
+      this.event_panel = n;
+
+      if (this.event_panel == 1) {
+        axios.get('http://localhost:5000/get_upcoming_event')
+        .then(response => {this.event_template = response.data;})
+      }
+      if (this.event_panel == 2) {
+        axios.get('http://localhost:5000/get_my_events', {
+          params: {
+            user_id: parseInt(this.t_id)
+          }
+        })
+        .then(response => {this.event_template = response.data;})      }
+    },
+    subscribeevent: function(key, title, time, venue, details) {
+      if(this.t_taken) {
+        axios.post('http://localhost:5000/subscribe_event', {
+          u_id: parseInt(this.t_id),
+          e_id: parseInt(key),
+          i_title: title,
+          i_time: time,
+          i_venue: venue,
+          i_details: details
+        })
+        .then(response => {
+          if (response.data == "500") {
+            alert("ERROR: You are already subscribed here!")
+          }
+          else if (response.data == "200") {
+            alert("Event added to event list!")
+          }
+        })
+      }
+      else {
+        alert('Please login first before subscribing.')
+      }
+    },
+    unsubscribe: function(key) {
+      axios.get("http://localhost:5000/unsubscribe_event", {
+          params: {
+            event_id: parseInt(key)
+          }
+      })
+      .then(response => {if (response.data == "200") {alert("Sucessfully unsubscribed to event"); document.location.reload(true)}})
     }
   },
   mounted() {
     axios.get('http://localhost:5000/get_upcoming_event')
-    .then(response => {this.event_template = response.data; this.event_template['time'] = this.event_template['time'].toDateString()})
+    .then(response => {this.event_template = response.data;})
   }
 })
