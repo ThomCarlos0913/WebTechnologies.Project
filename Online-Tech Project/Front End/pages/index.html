@@ -16,7 +16,8 @@
           <a class="header-menu-option" style="color: tomato" href="index.html">Home</a>
           <a class="header-menu-option" href="events-page.html">Events</a>
           <a class="header-menu-option" href="about-us.html">About Us</a>
-          <a class="header-menu-option" href="login-page.html">Login</a>
+          <a class="header-menu-option" href="" v-show="t_taken" title="Logout accout?" v-on:click="logoutaccount">Hi there, {{t_username}}</a>
+          <a class="header-menu-option" href="login-page.html" v-show="!t_taken">Login</a>
         </div>
       </div>
       <!-- Jumbotron/Slide show -->

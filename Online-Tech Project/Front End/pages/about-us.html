@@ -8,7 +8,7 @@
     <link rel="icon" href="../styles/icons/site_icon.png" />
   </head>
   <body style="background-color: #1a1a1a; overflow:hidden;">
-    <div>
+    <div id="about_vue">
       <!-- Header -->
       <div style="height: 50px; background-color: #00334d">
         <img src="../styles/icons/app_logo4.png" style="padding: 10px; margin-left: 150px"/>
@@ -16,7 +16,8 @@
           <a class="header-menu-option" href="index.html">Home</a>
           <a class="header-menu-option" href="events-page.html">Events</a>
           <a class="header-menu-option" style="color: tomato" href="about-us.html">About Us</a>
-          <a class="header-menu-option" href="login-page.html">Login</a>
+          <a class="header-menu-option" href="" v-show="t_taken" title="Logout accout?" v-on:click="logoutaccount">Hi there, {{t_username}}</a>
+          <a class="header-menu-option" href="login-page.html" v-show="!t_taken">Login</a>
         </div>
       </div>
       <!-- Web Developers Section -->
@@ -59,5 +60,6 @@
         </div>
       </div>
     </div>
+    <script src="../scripts/vue_app.js"></script>
   </body>
 </html>

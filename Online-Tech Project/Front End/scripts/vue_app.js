@@ -11,7 +11,10 @@ var index_vue = new Vue({
       'venue':'',
       'time':'',
       'details':'',
-    }
+    },
+    t_username: localStorage.getItem('user'),
+    t_id: localStorage.getItem('id'),
+    t_taken: localStorage.getItem('isTaken')
   },
   methods: {
     nextslide: function(index) {
@@ -19,6 +22,10 @@ var index_vue = new Vue({
     },
     gotoslide: function(index) {
       this.showslide(this.slideindex = index)
+    },
+    logoutaccount: function() {
+      localStorage.clear();
+      window.location.href = '../pages/index.html';
     },
     showslide: function(n) {
       // initialization
@@ -63,6 +70,9 @@ var login_vue = new Vue ({
     signup_password: null,
     signup_confirmpass: null,
     signup_email: null,
+    t_username: localStorage.getItem('user'),
+    t_id: localStorage.getItem('id'),
+    t_taken: localStorage.getItem('isTaken')
   },
   methods: {
     displaysignup: function() {
@@ -74,12 +84,20 @@ var login_vue = new Vue ({
     /* VERIFYACCOUNT FUNCTION NOT YET DONE*/
     verifyaccount: function() {
       axios.get('http://localhost:5000/validate_account', {
-        params: {
+        auth: {
           username: this.username,
           password: this.password
         }
       })
-      .then(response => {})
+      .then(response => {if (response.data['code'] == '200') {
+        localStorage.setItem('isTaken', '1')
+        localStorage.setItem('user', response.data['user'])
+        localStorage.setItem('id', response.data['id'])
+        window.location.href = '../pages/index.html';
+      }
+    else {
+      alert('Username or password is incorrect');
+    }})
     },
     registeraccount: function() {
       if (this.signup_username && this.signup_password && this.signup_confirmpass && this.signup_email){
@@ -116,19 +134,19 @@ var admin_vue = new Vue ({
   data: {
     message: null,
     panel_view: 1,
-
     event_name: null,
     event_location: null,
     event_time: null,
     event_details: null,
-
     update_id: null,
     update_name: null,
     update_location: null,
     update_time: null,
     update_detail: null,
-
-    event_list: null
+    event_list: null,
+    t_username: localStorage.getItem('user'),
+    t_id: localStorage.getItem('id'),
+    t_taken: localStorage.getItem('isTaken')
   },
   methods: {
     update_panel: function(panel_number) {
@@ -195,6 +213,22 @@ var admin_vue = new Vue ({
   }
 });
 
+// About us page Vue application
+var about_page = new Vue({
+  el: "#about_vue",
+  data: {
+    t_username: localStorage.getItem('user'),
+    t_id: localStorage.getItem('id'),
+    t_taken: localStorage.getItem('isTaken')
+  },
+  methods: {
+    logoutaccount: function() {
+      localStorage.clear();
+      window.location.href = '../pages/index.html';
+    }
+  }
+});
+
 // Event Page Vue application
 var event_page = new Vue({
   el: "#events_vue",
@@ -204,6 +238,15 @@ var event_page = new Vue({
       'venue': '',
       'time': '',
       'details': ''
+    },
+    t_username: localStorage.getItem('user'),
+    t_id: localStorage.getItem('id'),
+    t_taken: localStorage.getItem('isTaken')
+  },
+  methods: {
+    logoutaccount: function() {
+      localStorage.clear();
+      window.location.href = '../pages/index.html';
     }
   },
   mounted() {

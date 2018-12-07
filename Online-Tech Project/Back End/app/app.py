@@ -1,29 +1,35 @@
 from flask import Flask, request, jsonify, url_for
 from init_db import DbInitData
 from models import *
-import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 import click
 from flask.cli import FlaskGroup
+import jwt
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = Configuration.SQLALCHEMY_DATABASE_URI
+app.config['SECRET_KEY'] = 'groupionlinetech'
 db.init_app(app)
+
+# Get token
+@app.route('/get_token', methods=['GET'])
+def get_token():
+    return str(request.authorization.username)
 
 # Validate entered info on login form
 @app.route('/validate_account', methods=['GET'])
 def validate_account():
-    incoming_username = request.args.get('username', 0)
-    incoming_password = request.args.get('password', 0)
-    queried_account = User.query.filter(User.username == incoming_username).first()
-    if queried_account:
-        if queried_account.username == incoming_username and queried_account.password == incoming_password:
-            #ENTER CODES HERE
-            print('')
-        else:
-            #ENTER CODES HERE
-            print('')
-    return ""
+    auth = request.authorization
+    account = User.query.filter(User.username == auth.username).first()
+    if account:
+        if auth and auth.username == account.username and check_password_hash(account.password, auth.password):
+            # create token
+            token = jwt.encode({'id':account.id, 'user':account.username, 'exp':50000}, app.config['SECRET_KEY'])
+            return jsonify({'code':'200','id': account.id, 'user':account.username})
+    else:
+        return 'Username or password is incorrect'
+    return '500'
 
 # Register user
 @app.route('/register_acount',methods=['POST'])
@@ -186,7 +192,7 @@ def cli():
 
 # Initialize database and db content
 @cli.command('init_db')
-def hello():
+def init_db():
     # Initialize tables
     db.create_all()
 

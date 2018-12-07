@@ -1,22 +1,23 @@
+from werkzeug.security import generate_password_hash, check_password_hash
 from models import *
 
 class DbInitData:
     def fetch_data():
         admin_list = []
         admin_list.append(User(username = "ThomCarlos",
-                        password = "thom123",
+                        password = generate_password_hash("thom123"),
                         email = "johnthomas.carlos@gmail.com",
                         privelege = 2))
         admin_list.append(User(username = "DexterCuaresma",
-                        password = "dexter",
+                        password =  generate_password_hash("dexter123"),
                         email = "cuaresmadexterjames@gmail.com",
                         privelege = 2))
         admin_list.append(User(username = "MarkCaadyang",
-                        password = "pogiako123",
+                        password =  generate_password_hash("pogiako123"),
                         email = "caadyangmark4599@gmail.com",
                         privelege = 2))
         admin_list.append(User(username = "RalphOrtiz",
-                        password = "ralph123",
+                        password =  generate_password_hash("ralph123"),
                         email = "ralphchrstian.ortiz@gmail.com",
                         privelege = 2))
 
