@@ -39,7 +39,7 @@
               <h1>{{value['title']}}</h1>
               <p id="venue">{{value['venue']}}</p>
               <p id="time">{{value['time']}}</p>
-              <button style="margin-top: 10px;">View Details</button>
+              <button style="margin-top: 10px;" v-on:click="viewdetails(value['title'],value['venue'],value['time'],value['details'])">View Details</button>
               <button class="join-btn" v-on:click="subscribeevent(key, value['title'], value['time'], value['venue'], value['details'])">Join Event</button>
             </div>
           </div>
@@ -61,7 +61,7 @@
                 <h1>{{value['title']}}</h1>
                 <p id="venue">{{value['venue']}}</p>
                 <p id="time">{{value['time']}}</p>
-                <button style="margin-top: 10px;">View Details</button>
+                <button style="margin-top: 10px;" v-on:click="viewdetails(value['title'],value['venue'],value['time'],value['details'])">View Details</button>
                 <button class="join-btn" v-on:click="unsubscribe(key)">Unsubscribe</button>
               </div>
             </div>

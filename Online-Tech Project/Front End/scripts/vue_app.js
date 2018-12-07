@@ -49,6 +49,12 @@ var index_vue = new Vue({
 
       this.slides[this.slideindex - 1].style.display = "block";
       this.dots[this.slideindex - 1].className += " active"
+    },
+    viewdetails: function(title, venue, time, details) {
+      alert('Event Title: ' + title + '\n' +
+            'Event Venue: ' + venue + '\n' +
+            'Event Time: ' + time + '\n' +
+            'Event Details: ' + details + '\n')
     }
   },
   mounted() {
@@ -302,6 +308,12 @@ var event_page = new Vue({
           }
       })
       .then(response => {if (response.data == "200") {alert("Sucessfully unsubscribed to event"); document.location.reload(true)}})
+    },
+    viewdetails: function(title, venue, time, details) {
+      alert('Event Title: ' + title + '\n' +
+            'Event Venue: ' + venue + '\n' +
+            'Event Time: ' + time + '\n' +
+            'Event Details: ' + details + '\n')
     }
   },
   mounted() {

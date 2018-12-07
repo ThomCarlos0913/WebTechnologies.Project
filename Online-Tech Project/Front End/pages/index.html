@@ -76,7 +76,7 @@
         <div class="section-header" style="float: right; width: 50%">
           <h2 style="text-align:center">Past Events</h2>
           <template v-for="(value, key) in list_passed">
-            <p class="passed_btn">{{value['title']}}</p>
+            <p class="passed_btn" v-on:click="viewdetails(value['title'],value['venue'],value['time'],value['details'])">{{value['title']}}</p>
           </template>
         </div>
       </div>

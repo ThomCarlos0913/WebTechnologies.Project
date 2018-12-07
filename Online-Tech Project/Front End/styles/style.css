@@ -443,6 +443,11 @@ body {
   font-family: ProximaNovaBold;
   color: white;
   padding: 10px;
+  transition: background-color 1s;
+}
+
+.event-header-btn:hover {
+  background-color: #00ace6;
 }
 
 #login-to-view h1 {
@@ -455,5 +460,5 @@ body {
 #login-to-view p {
   text-align: center;
   font-family: ProximaNovaLight;
-  color: #a6a6a6 ;
+  color: #a6a6a6;
 }
