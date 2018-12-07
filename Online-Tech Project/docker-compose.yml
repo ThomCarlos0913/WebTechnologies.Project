@@ -7,7 +7,7 @@ services:
     depends_on:
       - database
     ports:
-      - 8000
+      - 8000:8000
   frontend:
     build:
       context: './Front End'
