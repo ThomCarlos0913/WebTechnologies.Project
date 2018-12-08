@@ -22,3 +22,10 @@ CAADYANG, Mark Noe Christian P.
 CARLOS, John Thomas  
 CUARESMA, Dexter James L.  
 ORTIZ, Ralph Christian A.  
+
+---
+### Installation Instructions:
+1. Clone the repository using the following command git clone https://github.com/ThomCarlos0913/WebTechnologies.Project.git
+2. Go to cloned folder using docker and run the containers using command ``` docker-compose up -d --build  ```. Wait for containers to run.
+3. Initialize database by running command ``` docker-compose exec backend python app.py init_db ```
+4. Visit the website on localhost on native docker installation or on 192.168.99.100 on docker toolbox installation
