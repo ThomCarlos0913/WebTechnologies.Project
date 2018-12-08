@@ -102,7 +102,7 @@ var login_vue = new Vue ({
         localStorage.setItem('user', response.data['user'])
         localStorage.setItem('id', parseInt(response.data['id']))
         localStorage.setItem('privelege', parseInt(response.data['privelege']))
-        window.location.href = '../pages/index.html';
+        window.location.href = '../index.html';
       }
     else {
       alert('Username or password is incorrect');
