@@ -1,5 +1,5 @@
 
-class Configuration:          'mysql://user:user@database/db'
+class Configuration:
     SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:root@database/OnlineTechDataStore'
     USER_TABLENAME = 'users_account'
     EVENT_TABLENAME = 'event_details'
