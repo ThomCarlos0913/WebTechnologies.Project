@@ -30,3 +30,20 @@ ORTIZ, Ralph Christian A.
 3. Initialize database by running command ``` docker-compose exec backend python app.py init_db ```
 4. disable CORS policy (Reverse Proxy not added)
 5. Visit the website on localhost on native docker installation or on 192.168.99.100 on docker toolbox installation
+
+---
+### Access Admin Page:
+1. Login one of the following accounts:
+ * Username- ThomCarlos, Password- thom123
+ * Username- MarkCaadyang, Password- pogiako123
+ * Username- DexterCuaresma, Password- dexter123
+ * Username- RalphOrtiz, Password- ralph123
+2. Click the 'EventMania' Logo on the upper left of the page
+3. Welcome to the admin page
+
+Note: Admin page page can only be accessed by the following users. Ordinary users will not be granted admin access.
+
+---
+### Known Bugs:
+1. Database not starting up.
+ * Somehow database is not running/initializing. Solution: run command ``` docker-compose up ``` again.
