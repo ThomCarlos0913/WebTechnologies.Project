@@ -26,10 +26,11 @@ ORTIZ, Ralph Christian A.
 ---
 ### Installation Instructions:
 1. Clone the repository using the following command git clone https://github.com/ThomCarlos0913/WebTechnologies.Project.git
-2. Go to cloned folder using docker and run the containers using command ``` docker-compose up -d --build  ```. Wait for containers to run. Wait a few minutes for database service to initialize.
-3. Initialize database by running command ``` docker-compose exec backend python app.py init_db ```
-4. disable CORS policy (Reverse Proxy not added)
-5. Visit the website on localhost on native docker installation or on 192.168.99.100 on docker toolbox installation
+2. Go to cloned folder using docker and run the containers using command ``` docker-compose up -d --build  ```
+3. Start database by using command ``` docker-compose start database ```
+4. Initialize database by running command ``` docker-compose exec backend python app.py init_db ```
+5. disable CORS policy (Reverse Proxy not added)
+6. Visit the website on localhost on native docker installation or on 192.168.99.100 on docker toolbox installation
 
 ---
 ### Access Admin Page:
@@ -42,8 +43,3 @@ ORTIZ, Ralph Christian A.
 3. Welcome to the admin page
 
 Note: Admin page page can only be accessed by the following users. Ordinary users will not be granted admin access.
-
----
-### Known Bugs:
-1. Database not starting up.
- * Somehow database is not running/initializing. Solution: run command ``` docker-compose up ``` again.
