@@ -59,9 +59,9 @@ var index_vue = new Vue({
   },
   mounted() {
     this.showslide()
-    axios.get("http://192.168.99.100:8000/get_passed_events")
+    axios.get("/api/get_passed_events")
     .then(response => {this.list_passed = response.data})
-    axios.get("http://192.168.99.100:8000/get_featured")
+    axios.get("/api/get_featured")
     .then(response => {this.featured_event = response.data})
   }
 });
@@ -91,7 +91,7 @@ var login_vue = new Vue ({
     },
     /* VERIFYACCOUNT FUNCTION NOT YET DONE*/
     verifyaccount: function() {
-      axios.get('http://192.168.99.100:8000/validate_account', {
+      axios.get('/api/validate_account', {
         auth: {
           username: this.username,
           password: this.password
@@ -111,7 +111,7 @@ var login_vue = new Vue ({
     registeraccount: function() {
       if (this.signup_username && this.signup_password && this.signup_confirmpass && this.signup_email){
           if(this.signup_password == this.signup_confirmpass){
-            axios.post('http://192.168.99.100:8000/register_acount', {
+            axios.post('/api/register_acount', {
                 s_user: this.signup_username,
                 s_pass: this.signup_password,
                 s_email: this.signup_email
@@ -170,7 +170,7 @@ var admin_vue = new Vue ({
     },
     create_event: function() {
       if (this.event_name && this.event_location && this.event_time && this.event_details) {
-        axios.post('http://192.168.99.100:8000/create_event', {
+        axios.post('/api/create_event', {
           event_title: this.event_name,
           event_time: this.event_time,
           event_location: this.event_location,
@@ -190,7 +190,7 @@ var admin_vue = new Vue ({
       this.update_id = key
     },
     update_event: function() {
-      axios.get('http://192.168.99.100:8000/update_event', {
+      axios.get('/api/update_event', {
         params: {
           id: this.update_id,
           title: this.update_name,
@@ -202,7 +202,7 @@ var admin_vue = new Vue ({
       .then(response => {alert('Event Successfully Updated!'); document.location.reload(true)})
     },
     delete_event: function() {
-      axios.get('http://192.168.99.100:8000/delete_event', {
+      axios.get('/api/delete_event', {
         params: {
           id: this.update_id
         }
@@ -210,7 +210,7 @@ var admin_vue = new Vue ({
       .then(response => {alert('Event Sucessfully Deleted!'); document.location.reload(true)})
     },
     update_featured: function() {
-      axios.get('http://192.168.99.100:8000/update_featured', {
+      axios.get('/api/update_featured', {
         params: {
           id: this.update_id
         }
@@ -219,7 +219,7 @@ var admin_vue = new Vue ({
     }
   },
   mounted() {
-    axios.get('http://192.168.99.100:8000/get_events')
+    axios.get('/api/get_events')
     .then(response => {this.event_list = response.data})
   }
 });
@@ -267,11 +267,11 @@ var event_page = new Vue({
       this.event_panel = n;
 
       if (this.event_panel == 1) {
-        axios.get('http://192.168.99.100:8000/get_upcoming_event')
+        axios.get('/api/get_upcoming_event')
         .then(response => {this.event_template = response.data;})
       }
       if (this.event_panel == 2) {
-        axios.get('http://192.168.99.100:8000/get_my_events', {
+        axios.get('/api/get_my_events', {
           params: {
             user_id: parseInt(this.t_id)
           }
@@ -280,7 +280,7 @@ var event_page = new Vue({
     },
     subscribeevent: function(key, title, time, venue, details) {
       if(this.t_taken) {
-        axios.post('http://192.168.99.100:8000/subscribe_event', {
+        axios.post('/api/subscribe_event', {
           u_id: parseInt(this.t_id),
           e_id: parseInt(key),
           i_title: title,
@@ -302,7 +302,7 @@ var event_page = new Vue({
       }
     },
     unsubscribe: function(key) {
-      axios.get("http://192.168.99.100:8000/unsubscribe_event", {
+      axios.get("/api/unsubscribe_event", {
           params: {
             event_id: parseInt(key)
           }
@@ -317,7 +317,7 @@ var event_page = new Vue({
     }
   },
   mounted() {
-    axios.get('http://192.168.99.100:8000/get_upcoming_event')
+    axios.get('/api/get_upcoming_event')
     .then(response => {this.event_template = response.data;})
   }
 })
