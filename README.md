@@ -44,4 +44,4 @@ ORTIZ, Ralph Christian A.
 
 Note: Admin page page can only be accessed by the following users. Ordinary users will not be granted admin access.
 
-*** Click "Hi there, <username>" on the top right of the screen to log out.
+*** Click "Hi there, <your_username>" on the top right of the screen to log out.
