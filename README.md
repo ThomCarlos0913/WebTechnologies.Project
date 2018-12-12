@@ -43,3 +43,5 @@ ORTIZ, Ralph Christian A.
 3. Welcome to the admin page
 
 Note: Admin page page can only be accessed by the following users. Ordinary users will not be granted admin access.
+
+*** Click "Hi there, <username> on the top right of the screen to log out.
