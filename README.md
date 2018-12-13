@@ -29,8 +29,7 @@ ORTIZ, Ralph Christian A.
 2. Go to cloned folder using docker and run the containers using command ``` docker-compose up -d --build  ```
 3. Start database by using command ``` docker-compose start database ```
 4. Initialize database by running command ``` docker-compose exec backend python app.py init_db ```
-5. disable CORS policy (Reverse Proxy not added)
-6. Visit the website on localhost on native docker installation or on 192.168.99.100 on docker toolbox installation
+5. Visit the website on localhost on native docker installation or on 192.168.99.100 on docker toolbox installation
 
 ---
 ### Access Admin Page:
